@@ -8,6 +8,26 @@
  margin-bottom: 12px;
 }
 
+.navbar {
+ font-size: 1.2em;
+ letter-spacing: -1px;
+ margin-bottom: 30px;
+ text-align: center;
+ font-weight: normal;
+}
+
+.navbar-item {
+ color: white;
+}
+
+a {
+ color: red;
+}
+a:hover {
+ color:  hotpink;
+}
+
+
 h2 {
  font-size: 1.2em;
  letter-spacing: -1px;
@@ -24,11 +44,10 @@ p {
  text-transform: uppercase;
  font-weight: bold;
  letter-spacing: -1px;
- float: left;
+ float: center;
  margin-right: 10px;
  padding-top: 9px;
  font-size: 2.2em;
- color: #fff;
 }
 
 footer {
