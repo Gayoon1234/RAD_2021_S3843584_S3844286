@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'items/new'
+
   get 'static_pages/home'
   
   root 'static_pages#home'
