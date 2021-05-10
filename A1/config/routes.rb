@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'customers/new'
+
+  get 'users/new'
+
   get 'items/new'
 
   get 'static_pages/home'

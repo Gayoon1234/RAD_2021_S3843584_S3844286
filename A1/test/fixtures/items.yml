@@ -4,12 +4,14 @@ one:
   name: MyString
   section: MyString
   price: 9.99
-  type: 
+  item_type: MyString
   colour: MyString
+  company: MyString
 
 two:
   name: MyString
   section: MyString
   price: 9.99
-  type: 
+  item_type: MyString
   colour: MyString
+  company: MyString
