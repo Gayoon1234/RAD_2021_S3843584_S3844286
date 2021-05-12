@@ -1,0 +1,49 @@
+<h2>Tops</h2>
+<div class="row">
+<% @tops.each do |item| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src=<%= item.image_url %> alt="...">
+      <div class="caption">
+        <h3><%= item.name %></h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+<%end %>
+</div>
+
+<h2>Bottoms</h2>
+<div class="row">
+<% @bottoms.each do |item| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src=<%= item.image_url %> alt="...">
+      <div class="caption">
+        <h3><%= item.name %></h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+<%end %>
+</div>
+
+<h2>Outerwear</h2>
+<div class="row">
+<% @outerwear.each do |item| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src=<%= item.image_url %> alt="...">
+      <div class="caption">
+        <h3><%= item.name %></h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+<%end %>
+</div>
+
+
