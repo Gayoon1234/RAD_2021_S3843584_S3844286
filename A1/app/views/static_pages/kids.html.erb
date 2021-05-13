@@ -1,4 +1,35 @@
-<% @items.each do |item| %>
-<img class="single-item" src = <%= item.image_url %>>
-   <%= item.name %></br>
+<h2>Tops</h2>
+<div class="row">
+<% @tops.each do |item| %>
+  <div class="col-sm-6 col-md-4">
+    <a href="items/<%= item.id%>">
+    <div class="thumbnail">
+      <img src=<%= item.image_url %> alt="...">
+      <div class="caption">
+        <h3><%= item.name %></h3>
+        <h4>$<%= item.price %></h4>
+        <p><a href="#" class="btn btn-primary" role="button">Save</a></p>
+      </div>
+    </div>
+    </a>
+  </div>
 <%end %>
+</div>
+
+<h2>Bottoms</h2>
+<div class="row">
+<% @bottoms.each do |item| %>
+  <div class="col-sm-6 col-md-4">
+    <a href="items/<%= item.id%>">
+    <div class="thumbnail">
+      <img src=<%= item.image_url %> alt="...">
+      <div class="caption">
+        <h3><%= item.name %></h3>
+        <h4>$<%= item.price %></h4>
+        <p><a href="#" class="btn btn-primary" role="button">Save</a></p>
+      </div>
+    </div>
+    </a>
+  </div>
+<%end %>
+</div>

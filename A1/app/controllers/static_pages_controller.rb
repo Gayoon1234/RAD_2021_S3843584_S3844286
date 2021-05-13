@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
     maximumItems = Item.count
     randomItemIndex = 1 + rand(maximumItems)
     @item = Item.find(randomItemIndex)
+  
   end
   
   def mens
@@ -14,8 +15,7 @@ class StaticPagesController < ApplicationController
     
      @outerwear = Array.new
     Item.where(section:"Mens", item_type:"Outerwear").each{|item| @outerwear.push(item)}
-    
-
+  
   end
   
   def womens
@@ -34,8 +34,12 @@ class StaticPagesController < ApplicationController
   end
   
   def kids
-    @items = Array.new
-    Item.where(section:"Childs").each{ |item| @items.push(item)}
-    Item.where(section:"Unisex").each{ |item| @items.push(item)}
+    @tops = Array.new
+    Item.where(section:"Childs", item_type:"Tops").each{ |item| @tops.push(item)}
+    
+    @bottoms = Array.new
+    Item.where(section:"Childs", item_type:"Bottoms").each{ |item| @bottoms.push(item)}
+    
   end
+
 end

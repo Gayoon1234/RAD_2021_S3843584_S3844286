@@ -1,12 +1,14 @@
 <% provide(:title, "Home" ) %>
 
+    <a href="items/<%= @item.id%>">
     <div class="center jumbotron">
         <h1>Item of the day</h1>
         <img class="single-item" src=<%=@item.image_url %> alt=<%= @item.name %>>
             <h2>
-                <%= @item.name %>, <%= @item.price %>
+                <%= @item.name %> $<%= @item.price %>
             </h2>
     </div>
+    </a>
 
     <div class="center jumbotron">
         <h1>Popular</h1>
@@ -34,36 +36,38 @@
 
                 <div class="col-sm-6 col-md-4">
                     <div class="row">
-
+                        <a href="mens">
                         <div class="thumbnail">
                             <div class="caption">
                                 <h3>Mens</h3>
                                 <p>Item Count Goes Here</p>
                             </div>
                         </div>
-
+                        </a>
                     </div>
 
                     <div class="row">
-
+                        <a href="kids">
                         <div class="thumbnail">
                             <div class="caption">
                                 <h3>Kids</h3>
                                 <p>Item Count Goes Here</p>
                             </div>
                         </div>
-
+                        </a>
                     </div>
                 </div>
 
 
                 <div class="col-sm-6 col-md-4">
+                    <a href="newin">
                     <div class="thumbnail">
                         <div class="caption">
                             <h3>New In</h3>
                             <p>Item Count Goes Here</p>
                         </div>
                     </div>
+                    </a>
                 </div>
 
 
