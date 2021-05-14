@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  
+
   get '/home', to: 'static_pages#home'
 
   get '/mens', to: 'static_pages#mens'
@@ -9,16 +11,15 @@ Rails.application.routes.draw do
   get '/kids', to: 'static_pages#kids'
 
   get '/newin', to: 'static_pages#newin'
-
+  
+  get '/allItems', to: 'static_pages#allItems'
+  
   get 'customers/new'
 
   get 'users/new'
 
   get 'items/new' 
   
-  
-  
-
   root 'static_pages#home'
   
   resources:items

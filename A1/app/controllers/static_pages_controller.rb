@@ -41,5 +41,10 @@ class StaticPagesController < ApplicationController
     Item.where(section:"Childs", item_type:"Bottoms").each{ |item| @bottoms.push(item)}
     
   end
+  
+  def allItems
+    @items = Array.new
+    Item.all.each{ |item| @items.push(item)}
+  end
 
 end
