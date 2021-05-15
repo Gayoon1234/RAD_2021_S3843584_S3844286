@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
-  
-
+  resources :saves
   get '/home', to: 'static_pages#home'
 
   get '/mens', to: 'static_pages#mens'

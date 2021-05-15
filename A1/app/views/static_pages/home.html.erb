@@ -1,31 +1,36 @@
 <% provide(:title, "Home" ) %>
 
-    <a href="items/<%= @item.id%>">
+    <a href="items/<%= $featuredItem.id%>">
     <div class="center jumbotron">
-        <h1>Item of the day</h1>
-        <img class="single-item" src=<%=@item.image_url %> alt=<%= @item.name %>>
+        <h1>Featured Item</h1>
+        <img class="single-item" src=<%=$featuredItem.image_url %> alt=<%= $featuredItem.name %>>
             <h2>
-                <%= @item.name %> $<%= @item.price %>
+                <%= $featuredItem.name %> $<%= $featuredItem.price %>
             </h2>
+            <p align="right"><a href="saves/show" class="glyphicon glyphicon-plus" role="button"></a></p>
     </div>
     </a>
 
     <div class="center jumbotron">
+        
         <h1>Popular</h1>
+        <span><a href="#" align="right"><p class="glyphicon glyphicon-plus" role="button"> SEE ALL</p></a></span>
+        
     </div>
 
     <div class="center jumbotron">
+        
         <h1>Collections</h1>
-        <p><a href="allItems" class="glyphicon glyphicon-chevron-right" role="button">show all</a></p>
+        <span><a href="allItems" align="right"><p class="glyphicon glyphicon-plus" role="button"> SEE ALL</p></a></span>
         
         <div class="center-table">
             <div class="row">
-                <div class="col-sm-12 col-md-8">
+                <div class="col-sm-12 col-md-20">
                     <a href="womens">
                     <div class="thumbnail">
                         <div class="caption">
                             <h3>Womens</h3>
-                            <p>Item Count Goes Here</p>
+                            <p><%=@itemCountWomens%> items</p>
                         </div>
                     </div>
                     </a>
@@ -34,13 +39,13 @@
 
             <div class="row">
 
-                <div class="col-sm-6 col-md-4">
+                <div class="col-sm-6 col-md-16">
                     <div class="row">
                         <a href="mens">
                         <div class="thumbnail">
                             <div class="caption">
                                 <h3>Mens</h3>
-                                <p>Item Count Goes Here</p>
+                                <p><%=@itemCountMens%> items</p>
                             </div>
                         </div>
                         </a>
@@ -51,7 +56,7 @@
                         <div class="thumbnail">
                             <div class="caption">
                                 <h3>Kids</h3>
-                                <p>Item Count Goes Here</p>
+                                <p><%=@itemCountKids%> items</p>
                             </div>
                         </div>
                         </a>
@@ -59,12 +64,12 @@
                 </div>
 
 
-                <div class="col-sm-6 col-md-4">
+                <div class="col-sm-6 col-md-16">
                     <a href="newin">
                     <div class="thumbnail">
                         <div class="caption">
                             <h3>New In</h3>
-                            <p>Item Count Goes Here</p>
+                            <p><%=@itemCountNewIn%> items</p>
                         </div>
                     </div>
                     </a>

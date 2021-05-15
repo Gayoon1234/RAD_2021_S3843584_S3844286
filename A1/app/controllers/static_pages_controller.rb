@@ -1,9 +1,13 @@
 class StaticPagesController < ApplicationController
+  
   def home
     maximumItems = Item.count
     randomItemIndex = 1 + rand(maximumItems)
-    @item = Item.find(randomItemIndex)
-  
+    $featuredItem = Item.find(randomItemIndex)
+    @itemCountWomens = Item.where(section:"Womens").count
+    @itemCountMens = Item.where(section:"Mens").count
+    @itemCountKids = Item.where(section:"Childs").count
+    @itemCountNewIn = Item.where(section:"Newin").count
   end
   
   def mens
@@ -46,5 +50,5 @@ class StaticPagesController < ApplicationController
     @items = Array.new
     Item.all.each{ |item| @items.push(item)}
   end
-
+  
 end
