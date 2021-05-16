@@ -2,8 +2,10 @@ class SavesController < ApplicationController
   
   def show
     
-    # we get the current featured item
-    @item = $featuredItem
+      # we get the current featured item
+    @item = $featuredItem 
+    
+    @item = Item.find(params[:id]) if params[:id] != "show"
     
     
     #add it to the database, for username:nil to work I commented out a line in the save.rb model
@@ -27,4 +29,10 @@ class SavesController < ApplicationController
 
   end
   
+  # def destroy
+  #   Save.find_by(name: params[:name]).destroy
+  #   redirect_to :index
+  # end
+  
+  #<%= link_to 'Delete', controller: 'saves', action: 'destroy', name: item.name, method: :delete %>
 end
