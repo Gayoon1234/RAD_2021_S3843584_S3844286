@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   
   get '/allItems', to: 'static_pages#allItems'
   
+  get '/saves/new/:id', to: 'saves#new'
+  
+  get '/saves/remove/:id', to: 'saves#remove'
+  
   get 'customers/new'
 
   get 'users/new'

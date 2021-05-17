@@ -1,38 +1,35 @@
 class SavesController < ApplicationController
   
   def show
-    
-      # we get the current featured item
-    @item = $featuredItem 
-    
-    @item = Item.find(params[:id]) if params[:id] != "show"
-    
-    
-    #add it to the database, for username:nil to work I commented out a line in the save.rb model
-        if Save.where(:name => @item.name).blank?
-      newSave = Save.create(name: @item.name, username: nil)
-      newSave.save!
-    end
-    
+    #iterate through the SavedList to get SavedItems for a particular user
     
     # for each item saved  by the current user
     @SavedList = Array.new
     Save.where(username: nil).each do |saveItem|
-      Item.where(name: saveItem.name).each{|item| @SavedList.push(item) if !@SavedList.include?(item)}
-                                                                        #this if statement filters out duplicate entries already present
+      Item.where(name: saveItem.name).each{|item| @SavedList.push(item)}
     end
     
-    # this just appends some test stuff to the end
-    @arr = Array.new
-    @arr.push("test")
-    @arr.push(Save.count)
-
   end
   
-  # def destroy
-  #   Save.find_by(name: params[:name]).destroy
-  #   redirect_to :index
-  # end
+  def new
+    #takes username + item id, and adds them to Saved Item DB
+    @SaveOrRemove = "Saved"
+    @item = Item.find(params[:id])
+    
+    #TODO: Make sure that checks USER + ITEM
+    if Save.where(:name => @item.name).blank?
+      newSave = Save.create(name: @item.name, username: nil)
+      newSave.save! #throws error if save does not work
+    end
+    
+  end
   
-  #<%= link_to 'Delete', controller: 'saves', action: 'destroy', name: item.name, method: :delete %>
+  def remove
+    @SaveOrRemove = "Removed"
+    @item = Item.find(params[:id])
+    
+    Save.find_by(name: @item.name, username:nil).destroy
+    
+  end
+  
 end

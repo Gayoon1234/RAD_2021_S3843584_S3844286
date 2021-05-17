@@ -1,6 +1,4 @@
-<h2 align="center">Saved Items</h2>
-
-<p> <%=@item.name%></p>
+<h2 align="center">Saved Item</h2>
 
 <div class="row">
 <% @SavedList.each do |item| %>
@@ -11,14 +9,10 @@
       <div class="caption">
         <p><%= item.name %></p>
         <p>$<%= item.price %></p>
-        <p><a class="btn btn-primary" role="button">Remove</a></p>
+        <p><a href="/saves/remove/<%=item.id%>"class="btn btn-primary" role="button">Remove</a></p>
       </div>
     </div>
     </a>
   </div>
 <%end %>
 </div>
-
-<% @arr.each do |thing| %>
-<p><%= thing %></p>
-<%end %>
