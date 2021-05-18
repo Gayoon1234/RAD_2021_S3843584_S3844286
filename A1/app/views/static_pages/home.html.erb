@@ -1,13 +1,13 @@
 <% provide(:title, "Home" ) %>
 
-    <a href="items/<%= $featuredItem.id%>">
+    <a href="items/<%= @featuredItem.id%>">
     <div class="center jumbotron">
         <h1>Featured Item</h1>
-        <img class="single-item" src=<%=$featuredItem.image_url %> alt=<%= $featuredItem.name %>>
+        <img class="single-item" src=<%=@featuredItem.image_url %> alt=<%= @featuredItem.name %>>
             <h2>
-                <%= $featuredItem.name %> $<%= $featuredItem.price %>
+                <%= @featuredItem.name %> $<%=@featuredItem.price %>
             </h2>
-            <p align="right"><a href="saves/new/<%=$featuredItem.id%>" class="glyphicon glyphicon-plus" role="button"></a></p>
+            <p align="right"><a href="saves/new/<%=@featuredItem.id%>" class="glyphicon glyphicon-plus" role="button"></a></p>
     </div>
     </a>
 
