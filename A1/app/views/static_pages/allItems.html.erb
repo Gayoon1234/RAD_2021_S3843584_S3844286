@@ -9,7 +9,16 @@
       <div class="caption">
         <p><%= item.name %></p>
         <p>$<%= item.price %></p>
-        <p><a href="/saves/<%=item.id%>" class="btn btn-primary" role="button">Save</a></p>
+        
+        
+        <p>
+        <% if user_signed_in? %>
+          <a href="/saves/<%=item.id%>" class="btn btn-primary" role="button">Save</a>
+        <% else %>
+          <a class="btn btn-primary" role="button" disabled>Save</a>
+        <% end %>
+        </p>
+        
       </div>
     </div>
     </a>
