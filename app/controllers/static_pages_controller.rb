@@ -1,9 +1,9 @@
 class StaticPagesController < ApplicationController
   
   def home
-    # maximumItems = Item.count
-    # randomItemIndex = 1 + rand(maximumItems)
-    # @featuredItem = Item.find(randomItemIndex)
+    maximumItems = Item.count
+    randomItemIndex = 1 + rand(maximumItems)
+    @featuredItem = Item.find(randomItemIndex)
     @itemCountWomens = Item.where(section:"Womens").count
     @itemCountMens = Item.where(section:"Mens").count
     @itemCountKids = Item.where(section:"Childs").count
