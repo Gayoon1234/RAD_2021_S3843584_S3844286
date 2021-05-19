@@ -12,15 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20210518031354) do
 
-  create_table "customers", force: :cascade do |t|
-    t.string   "username"
-    t.string   "email"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "password_digest"
-    t.index ["email"], name: "index_customers_on_email", unique: true
-  end
-
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.string   "section"
