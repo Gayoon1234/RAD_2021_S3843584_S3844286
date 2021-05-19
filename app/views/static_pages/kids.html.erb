@@ -9,11 +9,7 @@
         <p><%= item.name %></p>
         <p>$<%= item.price %></p>
         <p>
-        <% if user_signed_in? %>
-          <a href="/saves/<%=item.id%>" class="btn btn-primary" role="button">Save</a>
-        <% else %>
-          <a class="btn btn-primary" role="button" disabled>Save</a>
-        <% end %>
+          <a href="/saves/new/<%=item.id%>" class="glyphicon glyphicon-plus" role="button"></a>
         </p>
       </div>
     </div>
@@ -33,11 +29,7 @@
         <p><%= item.name %></p>
         <p>$<%= item.price %></p>
         <p>
-        <% if user_signed_in? %>
-          <a href="/saves/<%=item.id%>" class="btn btn-primary" role="button">Save</a>
-        <% else %>
-          <a class="btn btn-primary" role="button" disabled>Save</a>
-        <% end %>
+          <a href="/saves/new/<%=item.id%>" class="glyphicon glyphicon-plus" role="button"></a>
         </p>
       </div>
     </div>

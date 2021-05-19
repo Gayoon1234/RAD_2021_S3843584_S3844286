@@ -10,10 +10,12 @@ class SavesController < ApplicationController
     
     itemsFromCookie = cookies[userNameVar + "_saved"].split("_") if cookies[userNameVar + "_saved"]
     
+    itemsFromCookie.shift if itemsFromCookie[0] == ''
+    
     @SavedList = Array.new
     
     itemsFromCookie.each do |index|
-      @SavedList.push(Item.find(index))
+      @SavedList.push(Item.find(index)) #if index
     end
     
   end
@@ -47,7 +49,7 @@ class SavesController < ApplicationController
     userNameVar ||= "NoUser"
     
     # puts all cookie elements in an array
-    cookieContent = cookies[userNameVar + "_saved"].split("_")#.delete(params[:id])
+    cookieContent = cookies[userNameVar + "_saved"].split("_")
     
     # deletes item id from array of cookie content
     cookieContent.delete(params[:id])

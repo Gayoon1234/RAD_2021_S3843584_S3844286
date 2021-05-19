@@ -1,6 +1,14 @@
 <h2 align="center">Saved Items</h2>
 
 <div class="row">
+
+<% if @SavedList.size == 0 %>
+
+<h4 align="center">No Saved Items </h4>
+
+<% end %>
+
+
 <% @SavedList.each do |item| %>
   <div class="col-sm-6 col-md-4">
     <a href="/items/<%= item.id%>">
