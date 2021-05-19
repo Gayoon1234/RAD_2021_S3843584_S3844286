@@ -1,37 +1,58 @@
 class SavesController < ApplicationController
   
   def show
-    #iterate through the SavedList to get SavedItems for a particular user
     
-    # for each item saved  by the current user
+    userNameVar = current_user.username if current_user
+    
+    userNameVar ||= "NoUser"
+    
+    itemsFromCookie = Array.new
+    
+    itemsFromCookie = cookies[userNameVar + "_saved"].split("_") if cookies[userNameVar + "_saved"]
+    
     @SavedList = Array.new
-    Save.where(username: cookies[:mockuser]).each do |saveItem|
-      Item.where(name: saveItem.name).each{|item| @SavedList.push(item)}
+    
+    itemsFromCookie.each do |index|
+      @SavedList.push(Item.find(index))
     end
     
   end
   
   def new
-    
-    cookies[:mockuser] = {value: "MockUser"} #change to logged-in user # move to when they login
-    
-    #takes username + item id, and adds them to Saved Item DB
-    
+    # needed to show picture for save page
     @item = Item.find(params[:id])
     
-    #TODO: Make sure that checks USER + ITEM
-    if Save.where(:name => @item.name).blank?
-      newSave = Save.create(name: @item.name, username: "MockUser") #change to logged-in user
-      newSave.save! #throws error if save does not work
+    userNameVar = current_user.username if current_user
+    
+    userNameVar ||= "NoUser"
+    
+    saveCookie = cookies[userNameVar + "_saved"]
+    
+    if saveCookie
+      saveCookie += "_#{params[:id]}"
+    else
+      saveCookie = params[:id]
     end
+    
+    cookies[userNameVar + "_saved"] = {value: saveCookie, expires: 1.hour.from_now}
     
   end
   
   def remove
+    # needed to show picture for remove page
+    @item = Item.find(params[:id]) 
     
-    @item = Item.find(params[:id])
+    userNameVar = current_user.username if current_user
     
-    Save.find_by(name: @item.name, username: "MockUser").destroy #change to logged-in user
+    userNameVar ||= "NoUser"
+    
+    # puts all cookie elements in an array
+    cookieContent = cookies[userNameVar + "_saved"].split("_")#.delete(params[:id])
+    
+    # deletes item id from array of cookie content
+    cookieContent.delete(params[:id])
+    
+    cookies[userNameVar + "_saved"] = {value: cookieContent.join('_'), expires: 1.hour.from_now}
     
   end
   

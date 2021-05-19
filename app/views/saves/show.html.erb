@@ -9,7 +9,10 @@
       <div class="caption">
         <p><%= item.name %></p>
         <p>$<%= item.price %></p>
-        <p><a href="/saves/remove/<%=item.id%>"class="btn btn-primary" role="button">Remove</a></p>
+        <p align="right">
+          <a href="/saves/remove/<%=item.id%>"class="glyphicon glyphicon-trash" role="button"></a>
+          <a class="glyphicon glyphicon-shopping-cart" role="button"></a>
+        </p>
       </div>
     </div>
     </a>

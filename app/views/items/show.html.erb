@@ -1,5 +1,16 @@
-<img class = "center-image" src=<%= @item.image_url %> alt=<%= @item.name %>>
-<p>I don't know how to center images damn it D:</p>
-<p>fortunately w3schools does :)</p>
-<h3 class=center><%= @item.name %></h3>
-<h3 class=center>$<%= @item.price %></h3>
+<div class="center jumbotron">
+        
+        <img class = "center-image" src=<%= @item.image_url %> alt=<%= @item.name %>>
+        <h3 class=center><%= @item.name %></h3>
+        <h3 class=center>$<%= @item.price %></h3>
+
+            
+                <p align="right">
+                    
+                    
+                    <a href="/saves/new/<%=@item.id%>" class="glyphicon glyphicon-plus" role="button"></a>    
+                </p>
+              
+</div>
+
+

@@ -7,28 +7,22 @@
             <h2>
                 <%= @featuredItem.name %> $<%=@featuredItem.price %>
             </h2>
-            
-            <% if user_signed_in? %>
-              <p align="right"><a href="saves/new/<%=@featuredItem.id%>" class="glyphicon glyphicon-plus" role="button"></a></p>
-            <% else %>
-              <p align="right"><a class="glyphicon glyphicon-ban-circle" role="button"></a></p>
-            <% end %>
-            
-            
+
+            <p align="right"><a href="/saves/new/<%=@featuredItem.id%>" class="glyphicon glyphicon-plus" role="button"></a></p>
     </div>
     </a>
 
     <div class="center jumbotron">
         
         <h1>Popular</h1>
-        <span><a href="#" align="right"><p class="glyphicon glyphicon-plus" role="button"> SEE ALL</p></a></span>
+        <span><a href="#" align="center"><p>>SEE ALL</p></a></span>
         
     </div>
 
     <div class="center jumbotron">
         
         <h1>Collections</h1>
-        <span><a href="allItems" align="right"><p class="glyphicon glyphicon-plus" role="button"> SEE ALL</p></a></span>
+        <span><a href="allItems" align="center"><p>>SEE ALL</p></a></span>
         
         <div class="center-table">
             <div class="row">

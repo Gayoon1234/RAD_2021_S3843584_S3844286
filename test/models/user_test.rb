@@ -1,25 +1,35 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+fixtures :users
+
+ def setup
+ #@user = User.new(email: "customer@myapp.com", username: "RAD")
+ end
+ 
+#  test "should be valid" do
+#  assert @user.valid?
+#  end
+ 
+#  test "name should be present" do
+#  @user = User.find_by(username: "John")
+#  @user.username = " "
+#  assert_not @user.valid?
+#  end
+ 
+#  test "email should be present" do
+#  @user.email = " "
+#  assert_not @user.valid?
+#  end
+ 
+#  test "username should be unique" do
+#  @user = User.new(username: "RAD", email:"user@myapp.com")
+#  end
   
-  def setup
- @customer = Customer.new(username: "Test Customer", email: "customer@myapp.com")
- end
- test "should be valid" do
- assert @customer.valid?
- end
- 
- test "name should be present" do
- @customer.username = " "
- assert_not @customer.valid?
- end
- 
- test "email should be present" do
- @customer.email = " "
- assert_not @customer.valid?
- end
+    # test "name should be present" do
+    #     @user = User.find_by(username: "John")
+    #     assert_not @user.valid?
+    # end
   
 end
