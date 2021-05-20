@@ -8,7 +8,7 @@ class CartsController < ApplicationController
     
     Cart.where(username: current_user.username).each {|saveItem| @cartItems.push(saveItem.itemID)}
     
-    @cartItems.each {|cartItem| @clothingItems.push(Item.find(cartItem.itemID))}
+    # @cartItems.each {|cartItem| @clothingItems.push(Item.find(cartItem.itemID))}
     
   end
 
