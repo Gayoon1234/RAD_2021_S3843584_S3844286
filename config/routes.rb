@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   get 'items/new' 
   
+  get 'home/newsletter', to: 'static_pages#home'
+  
   root 'static_pages#home'
   
   resources:items

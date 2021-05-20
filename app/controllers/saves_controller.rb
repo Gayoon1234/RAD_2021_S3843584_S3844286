@@ -1,5 +1,6 @@
 class SavesController < ApplicationController
   
+
   def show
     
     userNameVar = current_user.username if current_user
@@ -37,7 +38,6 @@ class SavesController < ApplicationController
     end
     
     cookies[userNameVar + "_saved"] = {value: saveCookie, expires: 1.hour.from_now}
-    
   end
   
   def remove
