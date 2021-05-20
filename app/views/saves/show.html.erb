@@ -19,7 +19,20 @@
         <p>$<%= item.price %></p>
         <p align="right">
           <a href="/saves/remove/<%=item.id%>"class="glyphicon glyphicon-trash" role="button"></a>
-          <a class="glyphicon glyphicon-shopping-cart" role="button"></a>
+          
+          <% if user_signed_in? %>
+            <a class="glyphicon glyphicon-shopping-cart" role="button" href="/carts/new/<%=item.id%>"></a>
+          <% else %>
+            
+            <script>
+            function alertForCart() {
+              alert("Login to proceed");
+            }
+            </script>
+        
+            <a onclick="alertForCart()" class="glyphicon glyphicon-shopping-cart" role="button" href="/users/sign_in"></a>
+          <% end %>
+
         </p>
       </div>
     </div>

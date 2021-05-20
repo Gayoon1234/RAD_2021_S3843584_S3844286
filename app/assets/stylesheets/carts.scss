@@ -1,0 +1,18 @@
+// Place all the styles related to the Carts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#quantityForm {
+    text-align: center;
+    padding: 5px;
+    // border: 1px dotted #ccc;
+    margin: 2%;
+}
+.qty {
+    width: 35px;
+    height: 25px;
+    text-align: center;
+}
+input.qtyplus { width:25px; height:25px;}
+input.qtyminus { width:25px; height:25px;}

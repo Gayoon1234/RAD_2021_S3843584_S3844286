@@ -23,7 +23,10 @@ class SavesController < ApplicationController
   
   def new
     # needed to show picture for save page
-    @item = Item.find(params[:id])
+    
+    itemID = params[:id]
+    
+    @item = Item.find(itemID)
     
     userNameVar = current_user.username if current_user
     
@@ -32,17 +35,24 @@ class SavesController < ApplicationController
     saveCookie = cookies[userNameVar + "_saved"]
     
     if saveCookie
-      saveCookie += "_#{params[:id]}"
+      
+      saveCookieArray = saveCookie.split("_")
+      
+      
+      saveCookie += "_#{itemID}" unless saveCookieArray.include? itemID
     else
-      saveCookie = params[:id]
+      saveCookie = itemID
     end
     
     cookies[userNameVar + "_saved"] = {value: saveCookie, expires: 1.hour.from_now}
   end
   
   def remove
+    
+    itemID = params[:id]
+    
     # needed to show picture for remove page
-    @item = Item.find(params[:id]) 
+    @item = Item.find(itemID) 
     
     userNameVar = current_user.username if current_user
     
@@ -52,7 +62,7 @@ class SavesController < ApplicationController
     cookieContent = cookies[userNameVar + "_saved"].split("_")
     
     # deletes item id from array of cookie content
-    cookieContent.delete(params[:id])
+    cookieContent.delete(itemID)
     
     cookies[userNameVar + "_saved"] = {value: cookieContent.join('_'), expires: 1.hour.from_now}
     

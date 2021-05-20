@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   
+  get 'carts/show'
+
+  #get 'carts/new'
+
+  get 'carts/edit'
+  
+  get 'carts/remove'
+  
+  get 'carts/new/:id', to: "carts#new"
+  
   devise_for :users
   
   resources :saves
