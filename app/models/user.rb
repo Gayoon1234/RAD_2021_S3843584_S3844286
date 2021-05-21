@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, 
          #:omniauthable, omniauth_providers: %i[twitter], password_length: 8..20
-         :omniauthable, :omniauth_providers => [:twitter], password_length: 8..20
-  
+         #:omniauthable, :omniauth_providers => [:twitter], password_length: 8..20
+         :omniauthable, omniauth_providers: %i[twitter], password_length: 8..20
   
   validates_uniqueness_of :username
   validates_confirmation_of :password
@@ -16,6 +16,7 @@ class User < ApplicationRecord
     user.email = auth.info.email
     user.password = Devise.friendly_token[0, 20]
     user.username = auth.info.nickname 
+    user.skip_confirmation!
     end
   end
   

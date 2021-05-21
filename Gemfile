@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+gem 'omniauth-rails_csrf_protection'
+
 gem 'devise'
 gem 'sendgrid-ruby'
 
