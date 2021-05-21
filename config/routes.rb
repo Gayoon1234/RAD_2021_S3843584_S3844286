@@ -2,13 +2,15 @@ Rails.application.routes.draw do
   
   get 'carts/show'
 
-  #get 'carts/new'
-
+  get 'carts/show/:checkout', to: "carts#show"
+  
   get 'carts/edit'
   
   get 'carts/remove'
   
   get 'carts/new/:id', to: "carts#new"
+  
+  get 'carts/add'
   
   #devise_for :users
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }

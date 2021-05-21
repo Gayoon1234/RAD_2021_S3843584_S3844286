@@ -1,29 +1,26 @@
 class CartsController < ApplicationController
   def show
     
-    add(params) if params
+    checkoutCart if params[:checkout] == "checkout"
     
     @cartItems = Array.new
-    @clothingItems = Array.new
     
-    Cart.where(username: current_user.username).each {|saveItem| @cartItems.push(saveItem.itemID)}
-    
-    # @cartItems.each {|cartItem| @clothingItems.push(Item.find(cartItem.itemID))}
+    Cart.where(username: current_user.username).each do |saveItem|
+      
+      c = CartItem.new(saveItem.colour, saveItem.size, saveItem.quantity, saveItem.itemID)
+      
+      @cartItems.push(c)
+      
+    end
     
   end
-
+  
   def new
     itemID = params[:id]
     @item = Item.find(itemID)
   end
-
-  def remove
-  end
-
-  def edit
-  end
   
-  def add(params)
+  def add
     
     userNameVar = current_user.username
     colour = params[:colour]
@@ -33,11 +30,34 @@ class CartsController < ApplicationController
     
     Cart.create(username: userNameVar, colour: colour, size: size, quantity: quantity, itemID: itemID)
     
-  end 
+    @item = Item.find(itemID)
+  end
   
+  def remove
+  end
+
+  def edit
+  end
   
-  def getItem(itemID)
-    Item.find(itemID)
+  def checkoutCart
+    
+    userNameVar = current_user.username
+    
+    Cart.where(username: userNameVar).destroy_all
+    
+  end
+  
+  class CartItem
+    
+    attr_accessor :colour, :size, :quantity, :item
+    
+    def initialize(colour, size, quantity, itemID)
+     @colour = colour
+     @size = size
+     @quantity = quantity
+     @item = Item.find(itemID)
+    end
+    
   end
   
 end

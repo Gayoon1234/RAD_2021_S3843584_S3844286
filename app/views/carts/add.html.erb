@@ -1,0 +1,15 @@
+<h1>Added Item To Cart</h1>
+
+<div class="row">
+  
+    <a href="items/<%= @item.id%>">
+    <div class="thumbnail">
+      <img src=<%= @item.image_url %> alt="...">
+      <div class="caption">
+        <p><%= @item.name %></p>
+        <p>$<%= @item.price %></p>
+      </div>
+    </div>
+    </a>
+  
+</div>

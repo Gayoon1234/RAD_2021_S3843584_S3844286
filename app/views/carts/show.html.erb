@@ -1,8 +1,42 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<h1 align=center>Cart</h1>
+
+<h4>Items in cart: <%= @cartItems.length %></h4>
+
+<br>
 
 <% @cartItems.each do |item| %>
 
-<p><%= item %></p>
+<div class="panel panel-info">
+    <div class="panel-heading"><%= item.item.name %></div>
+    <div class="panel-body ">
+        
+        <span>
+        <table>
+        <tr>
+        <td >COLOUR:
+        <span style="color:<%= item.colour %>; font-size: 2.5em;"><%= "■" * item.quantity%><%= "□" * (5-item.quantity) %></span>
+        </td>
+        <td >SIZE: <%= item.size %></td>
+        <td>QTY: <%= item.quantity %></td>
+        <td>PRICE: <%=item.item.price * item.quantity%></td>
+        <td style="width: 75%;"></td>
+        <td class="right">
+            ​<img src="<%= item.item.image_url %>" width="40" height="40" alt="Computer Hope">
+        </td>
+        </tr>
+        </table>
+        </span>
+        
+    </div>
+</div>
 
 <%end %>
+
+<br>
+
+
+    
+    <div class="center">
+    <a href="show/checkout"><button class="btn btn-default btn-lg">Checkout Cart</button></a>
+    </div>
+
