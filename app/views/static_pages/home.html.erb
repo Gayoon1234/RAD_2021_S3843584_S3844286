@@ -1,7 +1,7 @@
 <% provide(:title, "Home" ) %>
 
    <a href="items/<%= @featuredItem.id%>">
-    <div class="center jumbotron">
+    <div class="center jumbotron" style="width: 100%;">
         <h1>Featured Item</h1>
         <img class="single-item" src=<%=@featuredItem.image_url %> alt=<%= @featuredItem.name %>>
             <h2>
@@ -12,14 +12,14 @@
     </div>
     </a>
 
-    <div class="center jumbotron">
+    <div class="center jumbotron" style="width: 100%;">
         
         <h1>Popular</h1>
         <span><a href="#" align="center"><p>>SEE ALL</p></a></span>
         
     </div>
 
-    <div class="center jumbotron">
+    <div class="center jumbotron" style="width: 100%;">
         
         <h1>Collections</h1>
         <span><a href="allItems" align="center"><p>>SEE ALL</p></a></span>
@@ -82,7 +82,7 @@
 
     </div>
 
-    <div class="center jumbotron">
+    <div class="center jumbotron" style="width: 100%;">
         <h1>Newsletter</h1>
         
         <form action="/home">
