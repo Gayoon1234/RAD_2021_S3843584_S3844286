@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+
 gem 'devise'
 gem 'sendgrid-ruby'
 
