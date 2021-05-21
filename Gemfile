@@ -2,15 +2,7 @@ source 'https://rubygems.org'
 
 
 gem 'omniauth'
-gem 'omniauth-twitter', '~> 1.2', '>= 1.2.1'
-
-gem 'activerecord-session_store', '~> 1.0'
-
-gem 'dotenv', '~> 2.2.1'
-
-
-
-
+gem 'omniauth-twitter'
 
 gem 'devise'
 gem 'sendgrid-ruby'
