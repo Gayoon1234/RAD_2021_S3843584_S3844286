@@ -28,7 +28,9 @@ class CartsController < ApplicationController
     quantity = params[:quantity]
     itemID = params[:itemID]
     
-    Cart.create(username: userNameVar, colour: colour, size: size, quantity: quantity, itemID: itemID)
+    cart = Cart.create(username: userNameVar, colour: colour, size: size, quantity: quantity, itemID: itemID)
+    cart.save
+    
     
     @item = Item.find(itemID)
   end
