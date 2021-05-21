@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   get 'carts/add'
   
   #devise_for :users
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  #devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth' }
   
   resources :saves
   get '/home', to: 'static_pages#home'
