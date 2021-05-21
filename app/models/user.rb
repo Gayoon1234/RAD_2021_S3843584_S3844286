@@ -3,8 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, 
-         :omniauthable, omniauth_providers: %i[twitter], password_length: 8..20
-
+         #:omniauthable, omniauth_providers: %i[twitter], password_length: 8..20
+         :omniauthable, :omniauth_providers => [:twitter], password_length: 8..20
+  
+  
   validates_uniqueness_of :username
   validates_confirmation_of :password
   validates_format_of :password, :with => /\A[a-zA-Z0-9]+\z/
