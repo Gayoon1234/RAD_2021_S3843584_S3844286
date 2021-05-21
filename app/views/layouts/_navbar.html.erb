@@ -18,8 +18,8 @@
       
       <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-            <li class="navbar-item"><%= button_to "SIGN OUT", destroy_user_session_path, method: :delete, class: "btn btn-default"  %></li>
             <li class="navbar-item" style="font-size: 24px"><a class="glyphicon glyphicon-shopping-cart" role="button" href="/carts/show"></a></li>
+            <li class="navbar-item"><%= button_to "SIGN OUT", destroy_user_session_path, method: :delete, class: "btn btn-default"  %></li>
           <% else %>
             <li class="navbar-item" style="font-size: 24px"><a onclick="alertForCart()" class="glyphicon glyphicon-shopping-cart" role="button" href="/users/sign_in"></a></li>
             <script>
