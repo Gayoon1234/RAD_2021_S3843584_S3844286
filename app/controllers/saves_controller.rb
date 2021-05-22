@@ -22,7 +22,6 @@ class SavesController < ApplicationController
   end
   
   def new
-    # needed to show picture for save page
     
     itemID = params[:id]
     
@@ -34,17 +33,22 @@ class SavesController < ApplicationController
     
     saveCookie = cookies[userNameVar + "_saved"]
     
+    itemAddedAlready = false
+    
     if saveCookie
-      
       saveCookieArray = saveCookie.split("_")
-      
-      
-      saveCookie += "_#{itemID}" unless saveCookieArray.include? itemID
+      itemAddedAlready = saveCookieArray.include? itemID
+      saveCookie += "_#{itemID}" unless itemAddedAlready
     else
       saveCookie = itemID
     end
     
+    itemPop = Item.find(itemID).popularity
+    itemPop = itemPop ? itemPop + 1 : 1 
+    Item.find(itemID).update(popularity: itemPop) unless itemAddedAlready
+    
     cookies[userNameVar + "_saved"] = {value: saveCookie, expires: 1.hour.from_now}
+    
   end
   
   def remove

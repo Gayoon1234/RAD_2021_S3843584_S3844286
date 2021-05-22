@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
   get '/newin', to: 'static_pages#newin'
   
+  get '/popular', to: 'static_pages#popular'
+  
   get '/allItems', to: 'static_pages#allItems'
   
   get '/saves/new/:id', to: 'saves#new'

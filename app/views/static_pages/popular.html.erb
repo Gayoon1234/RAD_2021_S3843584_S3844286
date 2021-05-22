@@ -1,4 +1,4 @@
-<h1>All Items</h1>
+<h1>Popular Items</h1>
 
 <div class="row">
 <% @items.each do |item| %>
@@ -9,6 +9,7 @@
       <div class="caption">
         <p><%= item.name %></p>
         <p>$<%= item.price %></p>
+        <b><p align="center">Popularity Score: <%= item.popularity %></p></b>
         <p>
           <a href="/saves/new/<%=item.id%>" class="glyphicon glyphicon-plus" role="button"></a>
         </p>

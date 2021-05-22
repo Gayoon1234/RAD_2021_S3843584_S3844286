@@ -28,6 +28,10 @@ class CartsController < ApplicationController
     quantity = params[:quantity]
     itemID = params[:itemID]
     
+    itemPop = Item.find(itemID).popularity
+    itemPop = itemPop ? itemPop + 1 : 1 
+    Item.find(itemID).update(popularity: itemPop)
+    
     cart = Cart.create(username: userNameVar, colour: colour, clothing_size: clothing_size, quantity: quantity, itemID: itemID)
     cart.save
     

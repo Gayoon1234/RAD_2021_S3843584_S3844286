@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_21_135950) do
+ActiveRecord::Schema.define(version: 2021_05_22_022854) do
 
   create_table "carts", force: :cascade do |t|
     t.string "username"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2021_05_21_135950) do
     t.string "image_url"
     t.string "image_url2"
     t.string "image_url3"
+    t.integer "popularity"
+    t.integer "stock_date"
   end
 
   create_table "users", force: :cascade do |t|

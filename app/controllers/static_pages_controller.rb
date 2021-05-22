@@ -75,4 +75,16 @@ class StaticPagesController < ApplicationController
     Item.all.each{ |item| @items.push(item)}
   end
   
+  def popular
+    
+    @items = Array.new
+    Item.all.each{ |item| @items.push(item)}
+    
+    @items = @items.sort_by(&:popularity).reverse
+    
+    @items = @items[0..4]
+    
+    
+  end
+  
 end
