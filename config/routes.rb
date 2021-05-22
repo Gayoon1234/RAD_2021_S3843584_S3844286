@@ -1,16 +1,6 @@
 Rails.application.routes.draw do
   
-  get 'carts/show'
-
-  get 'carts/show/:checkout', to: "carts#show"
   
-  get 'carts/edit'
-  
-  get 'carts/remove'
-  
-  get 'carts/new/:id', to: "carts#new"
-  
-  get 'carts/add'
   
   #devise_for :users
   
@@ -33,6 +23,8 @@ Rails.application.routes.draw do
   
   get '/allItems', to: 'static_pages#allItems'
   
+  get 'filter/:section', to: "static_pages#filter"
+  
   get '/saves/new/:id', to: 'saves#new'
   
   get '/saves/remove/:id', to: 'saves#remove'
@@ -44,6 +36,18 @@ Rails.application.routes.draw do
   get 'items/new' 
   
   get 'home/newsletter', to: 'static_pages#home'
+  
+  get 'carts/show'
+
+  get 'carts/show/:checkout', to: "carts#show"
+  
+  get 'carts/edit'
+  
+  get 'carts/remove'
+  
+  get 'carts/new/:id', to: "carts#new"
+  
+  get 'carts/add'
   
   root 'static_pages#home'
   

@@ -1,0 +1,193 @@
+<h1>Filters</h1>
+
+
+    
+<style>
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+</style>
+
+<form method="get" action="/<%=@section%>">
+
+<body>
+
+<h2>Collections</h2>
+<h3>Item Type</h3>
+
+<label class="container">Select All
+<input type="checkbox" id="selectAll" value="selectAll">
+<span class="checkmark"></span>
+</label>
+
+<label class="container">Outerwear
+  <input type="checkbox" name="Outerwear">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Tops
+  <input type="checkbox" name="Tops">
+  <span class="checkmark"></span>
+</label>
+
+<% if @section == "womens" || @section =="allItems" %>
+<label class="container">Dresses
+  <input type="checkbox" name="Dresses">
+  <span class="checkmark"></span>
+</label>
+<%end%>
+<label class="container">Bottoms
+  <input type="checkbox" name="Bottoms">
+  <span class="checkmark"></span>
+</label>
+
+<% if @section == "allItems"%>
+<label class="container">Scarves
+  <input type="checkbox" name="Scarves">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Hats
+  <input type="checkbox" name="Hats">
+  <span class="checkmark"></span>
+</label>
+<%end%>
+
+
+<h3>Colour</h3>
+
+<div class="pill-container">
+  
+  <% @colourFilters.each do |colour|  %>
+    <input type="checkbox" id="<%=colour%>" name="<%=colour%>" value="present">
+	  <label class="selector" for="<%=colour%>"> <%=colour%> </label>
+	  <br> <br>
+  <% end %>
+  
+</div>
+
+<style>
+ 
+
+.pill-container {
+	& input[type="checkbox"]{
+		opacity: 0;
+		position: fixed;
+		width: 0;
+	}
+	@include centered-layout;	
+	display:flex;
+	flex-direction: row;
+	width: 80%;
+	height: 3rem;
+	box-sizing: border-box;
+	.option-a {
+		border-top-left-radius: 20px;
+		border-bottom-left-radius: 20px;
+	}
+	
+}
+
+.selector {
+	display: flex;
+	align-items: center;
+	justify-content:center;
+	flex-grow: 1;
+	border-right: 0;
+}
+
+input[type="checkbox"]:checked + label {
+	background: $blue;
+	color: red;
+}
+</style>
+
+<h3>Size</h3>
+
+
+
+
+</body>
+    
+    
+<button type="submit" class="btn btn-default btn-lg">save filters</button>
+    
+</form>
+
+<script>
+  
+  $('#selectAll').click(function() {
+   if(this.checked) {
+       $(':checkbox').each(function() {
+           this.checked = true;                        
+       });
+   } else {
+      $(':checkbox').each(function() {
+           this.checked = false;                        
+       });
+   } 
+});
+
+</script>

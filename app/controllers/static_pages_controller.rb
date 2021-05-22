@@ -29,50 +29,75 @@ class StaticPagesController < ApplicationController
     @itemCountNewIn = Item.where(section:"Newin").count
     
       if params[:email]
-      # puts params[:email]
       sendEmail(params[:email])
       end
     end
   
   def mens
-    @tops = Array.new
-    Item.where(section:"Mens", item_type:"Tops").each{ |item| @tops.push(item)}
     
-    @bottoms = Array.new
-    Item.where(section:"Mens", item_type:"Bottoms").each{|item| @bottoms.push(item)}
+    @items, @appliedFilters = applyFilters("Mens")
     
-     @outerwear = Array.new
-    Item.where(section:"Mens", item_type:"Outerwear").each{|item| @outerwear.push(item)}
-  
+    if @appliedFilters.length() == 0
+    
+      @tops = Array.new
+      Item.where(section:"Mens", item_type:"Tops").each{|item| @tops.push(item)} 
+    
+      @bottoms = Array.new
+      Item.where(section:"Mens", item_type:"Bottoms").each{|item| @bottoms.push(item)}
+      
+      @outerwear = Array.new
+      Item.where(section:"Mens", item_type:"Outerwear").each{|item| @outerwear.push(item)}
+    
+    end
+    
   end
   
   def womens
-    @tops = Array.new
-    Item.where(section:"Womens", item_type:"Tops").each{ |item| @tops.push(item)}
     
-    @bottoms = Array.new
-    Item.where(section:"Womens", item_type:"Bottoms").each{|item| @bottoms.push(item)}
+    @items, @appliedFilters = applyFilters("Womens")
     
-     @outerwear = Array.new
-    Item.where(section:"Womens", item_type:"Outerwear").each{|item| @outerwear.push(item)}
+    if @appliedFilters.length() == 0
     
-    @dresses = Array.new
-    Item.where(section:"Womens", item_type:"Dresses").each{|item| @dresses.push(item)}
+      @tops = Array.new
+      Item.where(section:"Womens", item_type:"Tops").each{ |item| @tops.push(item)}
+      
+      @bottoms = Array.new
+      Item.where(section:"Womens", item_type:"Bottoms").each{|item| @bottoms.push(item)}
+      
+      @outerwear = Array.new
+      Item.where(section:"Womens", item_type:"Outerwear").each{|item| @outerwear.push(item)}
+      
+      @dresses = Array.new
+      Item.where(section:"Womens", item_type:"Dresses").each{|item| @dresses.push(item)}
+    
+    end
     
   end
   
   def kids
+    
+    @items, @appliedFilters = applyFilters("Childs")
+    
+    if @appliedFilters.length() == 0
+    
     @tops = Array.new
     Item.where(section:"Childs", item_type:"Tops").each{ |item| @tops.push(item)}
     
     @bottoms = Array.new
     Item.where(section:"Childs", item_type:"Bottoms").each{ |item| @bottoms.push(item)}
     
+    end
+    
   end
   
   def allItems
-    @items = Array.new
-    Item.all.each{ |item| @items.push(item)}
+    
+    @items, @appliedFilters = applyFilters(nil)
+    
+    
+    if @appliedFilters.length() == 0
+      Item.all.each{ |item| @items.push(item)} if @items.length() == 0
+    end
   end
   
   def popular
@@ -84,7 +109,43 @@ class StaticPagesController < ApplicationController
     
     @items = @items[0..4]
     
+  end
+  
+  def filter
+    @section = params[:section].to_s
     
+    @colourFilters = ["Blue","Purple","Olive","Navy","White","Gray","Red","Black",
+                      "Off-White","Natural","Beige","Dark-Green","Light-Blue","Orange","Pink"]
+
+  end
+  
+  def applyFilters(section)
+    
+    @arrayToBeFiltered = Array.new
+    if section
+      Item.where(section: section).each {|item| @arrayToBeFiltered.push(item)}
+    else
+      Item.all.each {|item| @arrayToBeFiltered.push(item)}
+    end
+    potentialTypes = ["Outerwear", "Tops", "Bottoms", "Dresses", "Scarves", "Hats"]
+    actualTypes = Array.new
+    potentialTypes.each {|type| actualTypes.push(type) if params[type]}
+    @arrayToBeFiltered = @arrayToBeFiltered.select {|item| actualTypes.include? item.item_type} unless actualTypes.length() == 0
+    
+    
+    potentialColours = ["Blue","Purple","Olive","Navy","White","Gray","Red","Black",
+                      "Off-White","Natural","Beige","Dark-Green","Light-Blue","Orange","Pink"]
+    actualColours = Array.new
+    potentialColours.each {|colour| actualColours.push(colour) if params[colour]}
+    @arrayToBeFiltered = @arrayToBeFiltered.select {|item| actualColours.include? item.colour} unless actualColours.length() == 0
+    
+    
+    @items = @arrayToBeFiltered
+    
+    @appliedFilters = actualTypes + actualColours
+    
+    
+    return @items, @appliedFilters
   end
   
 end
