@@ -154,7 +154,7 @@ class StaticPagesController < ApplicationController
     @items = @arrayToBeFiltered
     
     @appliedFilters = actualTypes + actualColours
-    @appliedFilters.push(selectedSize) if selectedSize != "--"
+    @appliedFilters.push(selectedSize) unless !selectedSize || selectedSize == "--"
     
     return @items, @appliedFilters
   end
