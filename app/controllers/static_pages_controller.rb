@@ -111,12 +111,20 @@ class StaticPagesController < ApplicationController
     
   end
   
+  def newin
+    @items = Array.new
+    Item.all.each{ |item| @items.push(item)}
+    
+    @items = @items.select {|item| item.stock_date <= 3}
+    
+  end
+  
+  
   def filter
     @section = params[:section].to_s
     
     @colourFilters = ["Blue","Purple","Olive","Navy","White","Gray","Red","Black",
                       "Off-White","Natural","Beige","Dark-Green","Light-Blue","Orange","Pink"]
-
   end
   
   def applyFilters(section)
@@ -140,10 +148,13 @@ class StaticPagesController < ApplicationController
     @arrayToBeFiltered = @arrayToBeFiltered.select {|item| actualColours.include? item.colour} unless actualColours.length() == 0
     
     
+    selectedSize = params[:item_size]
+    @arrayToBeFiltered = @arrayToBeFiltered.select {|item| item.item_size == selectedSize} unless !selectedSize || selectedSize == "--"
+    
     @items = @arrayToBeFiltered
     
     @appliedFilters = actualTypes + actualColours
-    
+    @appliedFilters.push(selectedSize) if selectedSize != "--"
     
     return @items, @appliedFilters
   end

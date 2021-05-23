@@ -1,3 +1,27 @@
 <h1>New In</h1>
 <img class = "center-image" src="http://static1.squarespace.com/static/5b606404e2ccd1dabec99c61/5b6092ef352f53c1e4e6c697/5d2f1a070c76f00001b15e1e/1563809590909/devil-wears-prada.jpg?format=1500w" alt="...">
 <p class="center">It's the latest fashion</p>
+
+
+<h1>New In</h1>
+
+<div class="row">
+<% @items.each do |item| %>
+  <div class="col-sm-6 col-md-4">
+    <a href="items/<%= item.id%>">
+    <div class="thumbnail">
+      <img src=<%= item.image_url %> alt="...">
+      <div class="caption">
+        <p><%= item.name %></p>
+        <p>$<%= item.price %></p>
+        <p><%= item.item_size %></p>
+        <b><p align="center">Months since in: <%= item.stock_date %></p></b>
+        <p>
+          <a href="/saves/new/<%=item.id%>" class="glyphicon glyphicon-plus" role="button"></a>
+        </p>
+      </div>
+    </div>
+    </a>
+  </div>
+<%end %>
+</div>
