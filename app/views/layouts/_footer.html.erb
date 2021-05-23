@@ -1,11 +1,16 @@
-<div class="navbar navbar-inverse navbar-fixed-bottom">
+<div class="navbar navbar-inverse navbar-fixed-bottom" id = "bottom">
 
         <table style="width: 100%;" class="footer">
         <tr>
         <td><a href ="/home">HOME<br><span class = "glyphicon glyphicon-home"></span> </a></td>
         <td><a href = "/">SCAN<br><span class = "glyphicon glyphicon-qrcode"></span></a></td>
         <td> <a href="/saves/show">SAVED<br><span class = "glyphicon glyphicon-bookmark"></span></a></td>
-        <td><a href = "/">PROFILE<br><span class = "glyphicon glyphicon-user"></span></a></td>
+        
+        <% if user_signed_in? %>
+                <td><a href = "/profile/show">PROFILE<br><span class = "glyphicon glyphicon-user"></span></a></td>
+        <% else %>
+                <td><a href = "/">PROFILE<br><span class = "glyphicon glyphicon-user"></span></a></td>
+        <%end%>
         </tr>
         </table>
 

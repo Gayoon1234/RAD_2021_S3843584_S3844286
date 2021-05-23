@@ -14,7 +14,7 @@
         <table>
         <tr>
         <td >COLOUR:
-        <span style="color:<%= item.colour %>; font-size: 2.5em;"><%= "■" * item.quantity%><%= "□" * (5-item.quantity) %></span>
+        <span style="color:<%= item.colour %>; font-size: 2.5em;"><%= "■" * item.quantity%><%= "□" * (5-item.quantity).abs() %></span>
         </td>
         <td >SIZE: <%= item.clothing_size %></td>
         <td>QTY: <%= item.quantity %></td>

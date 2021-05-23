@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   
   
   
+  get 'profile/show'
+  get 'profile/subscription'
+  get 'profile/updateDetails'
+  get 'profile/pendingOrders'
   #devise_for :users
   
   
