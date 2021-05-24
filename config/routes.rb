@@ -25,6 +25,12 @@ Rails.application.routes.draw do
   
   get 'filter/:section', to: "static_pages#filter"
   
+  get '/search', to: "static_pages#search"
+  
+  get '/rating', to: "static_pages#rating"
+  
+  get 'ratingSubmitted', to: "static_pages#ratingSubmitted"
+  
   get '/saves/new/:id', to: 'saves#new'
   
   get '/saves/remove/:id', to: 'saves#remove'

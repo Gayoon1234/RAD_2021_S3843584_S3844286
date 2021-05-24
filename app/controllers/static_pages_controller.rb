@@ -40,6 +40,17 @@ class StaticPagesController < ApplicationController
       end
     end
   
+  def search
+    
+    @searchInput = params[:searchInput]
+    
+    @items = Item.all
+    
+    @items = @items.select {|item| item.name.downcase.include? @searchInput.downcase}
+    
+  end
+  
+  
   def mens
     
     @items, @appliedFilters = applyFilters("Mens")
@@ -126,6 +137,19 @@ class StaticPagesController < ApplicationController
     
   end
   
+  def rating
+    
+    User.find(current_user.id).update_column(:firstCheckout, false)
+    
+    checkoutCart
+    
+  end
+  
+  def ratingSubmitted
+    
+    Rating.create(rating: params[:rating])
+    
+  end
   
   def filter
     @section = params[:section].to_s

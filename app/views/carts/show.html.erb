@@ -38,7 +38,11 @@
     
     <div class="center">
         
-        <a href="/carts/show/checkout"><button class="btn btn-default btn-lg">Checkout Cart</button></a>
+        <% if @firstTimeCheckingOut == true %>
+            <a href="/rating"><button class="btn btn-default btn-lg">Checkout Cart</button></a>
+        <% else %>
+            <a href="/carts/show/checkout"><button class="btn btn-default btn-lg">Checkout Cart</button></a>
+        <% end %>
         
     </div>
 

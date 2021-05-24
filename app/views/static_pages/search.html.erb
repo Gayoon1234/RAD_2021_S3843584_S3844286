@@ -1,0 +1,23 @@
+<h1>Search Results <%=@searchInput%></h1>
+
+<h2>Items Found: <%= @items.length()%></h2>
+
+<div class="row">
+<% @items.each do |item| %>
+  <div class="col-sm-6 col-md-4 filterDiv <%=item.section%>">
+    <a href="items/<%= item.id%>">
+    <div class="thumbnail">
+      <img src=<%= item.image_url %> alt="...">
+      <div class="caption">
+        <p><%= item.name %></p>
+        <p>$<%= item.price %></p>
+        <p><%= item.item_size %></p>
+        <p>
+          <a href="/saves/new/<%=item.id%>" class="glyphicon glyphicon-plus" role="button"></a>
+        </p>
+      </div>
+    </div>
+    </a>
+  </div>
+<%end %>
+</div>

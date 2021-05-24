@@ -9,4 +9,13 @@ class ApplicationController < ActionController::Base
         devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:username, :email, :password, :current_password)}
      end
   
+  
+  def checkoutCart
+    
+    userNameVar = current_user.username
+    
+    Cart.where(username: userNameVar).destroy_all
+    
+  end
+  
 end

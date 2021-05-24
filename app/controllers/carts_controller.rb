@@ -3,6 +3,8 @@ class CartsController < ApplicationController
     
     checkoutCart if params[:checkout] == "checkout"
     
+    @firstTimeCheckingOut = current_user.firstCheckout
+    
     @cartItems = Array.new
     
     Cart.where(username: current_user.username).each do |saveItem|
@@ -45,13 +47,7 @@ class CartsController < ApplicationController
   def edit
   end
   
-  def checkoutCart
-    
-    userNameVar = current_user.username
-    
-    Cart.where(username: userNameVar).destroy_all
-    
-  end
+  
   
   class CartItem
     
