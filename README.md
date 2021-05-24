@@ -151,5 +151,5 @@ Note:
     ![](TwitterApplicationRejected.png)
     We attempted the Twitter Login, and this can be seen through links present in devise config file
     However, these lines have been commented out due to a plethora of issues related to the twitter API
-    and its connection to our project
+    and its connection to our project 
 	
