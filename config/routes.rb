@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
   
-  
-  
   get 'profile/show'
   get 'profile/subscription'
-  get 'profile/updateDetails'
-  get 'profile/pendingOrders'
+
   #devise_for :users
-  
   
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
  

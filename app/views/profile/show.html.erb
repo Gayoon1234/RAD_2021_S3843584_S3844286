@@ -1,17 +1,28 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-  <h1 style="text-align:left;"><%= current_user.username %> <span style="float:right;"><img src="https://styles.redditmedia.com/t5_3devk/styles/communityIcon_56oosymx1ab51.png?width=256&s=bdc39e064f1879783bccb06525132d3acf802ca7"></span></h1> 
-    <p>peepeepoopoo <- this is not your password</p>
-    <p><%= current_user.created_at %> <- this when your account was created</p>
+  <h1 style="text-align:left;"><%= current_user.username %> <span style="float:right;">
+    <% provide(:title, @user.username) %>
+    <h1>
+      <%= gravatar_for @user %>
+      
+    </h1>
+    
+  </span></h1> 
+    <p><%= @user.email %></p>
   </div>
 </div>
  
 
 
-
 <br>
-<a href="/profile/subscription"><p>Subscribe to us</p></a>
-<a href="/profile/updateDetails"><p>Update your details</p></a>
-<a href="/profile/pendingOrders"><p>Pending Orders</p></a>
-<a href="/"><p>Invade Poland</p></a>
+
+<% if @subscribed == true %>
+<a href="/profile/subscription"><p>Unsubscribe</p></a>
+<% else @subscribed == false %>
+<a href="/profile/subscription"><p>Subscribe</p></a>
+<%end %>
+
+<p><%= link_to "Update Login Details", edit_user_registration_path %></p>
+<a href="/carts/show"><p>Pending Orders</p></a>
+<p><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "link"  %></p>
 

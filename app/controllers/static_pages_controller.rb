@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-   # using SendGrid's Ruby Library
+    # using SendGrid's Ruby Library
     # https://github.com/sendgrid/sendgrid-ruby
     require 'sendgrid-ruby'
     include SendGrid
@@ -7,8 +7,8 @@ class StaticPagesController < ApplicationController
     def sendEmail(subscriberEmail)
         from = Email.new(email: 'sathsaraguy@outlook.com')
         to = Email.new(email: subscriberEmail)
-        subject = 'You have 7 days to live...'
-        content = Content.new(type: 'text/plain', value: "I hope this email finds you before I do")
+        subject = 'Subscription'
+        content = Content.new(type: 'text/plain', value: "Congratulations you have subscribed to our newsletter")
         mail = Mail.new(from, subject, to, content)
 
         #If you are not Gayan then please don't steal his api key
@@ -29,7 +29,14 @@ class StaticPagesController < ApplicationController
     @itemCountNewIn = Item.where(section:"Newin").count
     
       if params[:email]
-      sendEmail(params[:email])
+        sendEmail(params[:email])
+        
+        userExists = User.where(email: params[:email])
+        
+        if userExists.length() == 1
+          User.find(userExists[0].id).update_column(:isSubscribed, true)
+        end
+      
       end
     end
   

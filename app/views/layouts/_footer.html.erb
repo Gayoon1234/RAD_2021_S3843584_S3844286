@@ -9,7 +9,14 @@
         <% if user_signed_in? %>
                 <td><a href = "/profile/show">PROFILE<br><span class = "glyphicon glyphicon-user"></span></a></td>
         <% else %>
-                <td><a href = "/">PROFILE<br><span class = "glyphicon glyphicon-user"></span></a></td>
+        
+        <script>
+            function alertForProfile() {
+              alert("Login to proceed");
+            }
+            </script>
+            
+                <td><a onclick="alertForProfile()" href="/users/sign_in">PROFILE<br><span class = "glyphicon glyphicon-user"></span></a></td>
         <%end%>
         </tr>
         </table>

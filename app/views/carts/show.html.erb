@@ -21,7 +21,7 @@
         <td>PRICE: <%=item.item.price * item.quantity%></td>
         <td style="width: 75%;"></td>
         <td class="right">
-            ​<img src="<%= item.item.image_url %>" width="40" height="40" alt="Computer Hope">
+            ​<a href="/items/<%= item.item.id %>"><img src="<%= item.item.image_url %>" width="40" height="40" alt="<%= item.item.name %> img"></a>
         </td>
         </tr>
         </table>
