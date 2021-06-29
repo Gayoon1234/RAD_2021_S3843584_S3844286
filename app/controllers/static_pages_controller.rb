@@ -5,14 +5,13 @@ class StaticPagesController < ApplicationController
     include SendGrid
     
     def sendEmail(subscriberEmail)
-        from = Email.new(email: 'sathsaraguy@outlook.com')
+        from = Email.new(email: '') #Email goes here
         to = Email.new(email: subscriberEmail)
         subject = 'Subscription'
         content = Content.new(type: 'text/plain', value: "Congratulations you have subscribed to our newsletter")
         mail = Mail.new(from, subject, to, content)
 
-        #If you are not Gayan then please don't steal his api key
-        sg = SendGrid::API.new(api_key: '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') 
+        sg = SendGrid::API.new(api_key: '' ) #API KEY GOES HERE 
         response = sg.client.mail._('send').post(request_body: mail.to_json)
         puts response.status_code
         puts response.body
